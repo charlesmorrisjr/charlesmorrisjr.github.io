@@ -1,0 +1,23 @@
+<!-- <pre>{{rooms | json}}</pre> -->
+<div *ngIf="isLoggedIn()">
+  <button (click)="addRoom()" class="btn btn-info">Add Room</button>
+</div>
+
+<div class="row">
+  <div *ngFor="let room of rooms" class="col-md-4">
+    <div class="card mt-2">
+      <div class="card-header">{{ room.name }}</div>
+      <img src="assets/images/{{ room.image }}" alt="room thumbnail" class="card-img-top">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">
+          Rate: {{ room.perDay | currency:'USD':'symbol' }} per day
+        </h6>
+        <p class="card-text" [innerHTML]="room.description">
+        </p>
+        <div *ngIf="isLoggedIn()">
+          <button (click)="editRoom(room)" class="btn btn-info">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

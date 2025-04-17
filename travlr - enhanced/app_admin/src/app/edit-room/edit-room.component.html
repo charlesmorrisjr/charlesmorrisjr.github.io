@@ -1,0 +1,64 @@
+<div class="col-md-4">
+  <h2 class="text-center">Edit Room</h2>
+  <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Code:</label>
+      <input type="text" formControlName="code" placeholder="Code" class="form-control" 
+        [ngClass]="{ 'is-invalid': submitted && f['code'].errors }">
+      <div *ngIf="submitted && f['code'].errors">
+        <div *ngIf="f['code'].errors?.['required']">
+          Room Code is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="text" formControlName="name" placeholder="Name" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+      <div *ngIf="submitted && f['name'].errors">
+        <div *ngIf="f['name'].errors?.['required']">
+          Name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Rate per Day:</label>
+      <input type="text" formControlName="perDay" placeholder="Rate per Day" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['perDay'].errors }">
+      <div *ngIf="submitted && f['perDay'].errors">
+        <div *ngIf="f['perDay'].errors?.['required']">
+          Rate per Day is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Image:</label>
+      <input type="text" formControlName="image" placeholder="Image filename" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['image'].errors }">
+      <div *ngIf="submitted && f['image'].errors">
+        <div *ngIf="f['image'].errors?.['required']">
+          Image filename is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description:</label>
+      <textarea formControlName="description" placeholder="Description" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['description'].errors }" rows="3"></textarea>
+      <div *ngIf="submitted && f['description'].errors">
+        <div *ngIf="f['description'].errors?.['required']">
+          Description is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group mt-3">
+      <button type="submit" class="btn btn-info">Update Room</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>
